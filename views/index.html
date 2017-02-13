@@ -1,0 +1,73 @@
+<html ng-app="pokemonAssignment">
+
+  <head>
+    <title>POKEDEX</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/pa.css" />
+  </head>
+
+<body class="container" ng-controller="PokedexController as pokedex">
+  <!-- <span ng-repeat="pokemon in pokedex.pokemons">{{pokemon.ename}}</span> -->
+  <div class="row">
+    <header col-md-12>
+      <img class="pokeball-icon" src="../images/pokeball_icon.png" />
+    </header>
+  </div>
+  <div class="row">
+    <hr />
+  </div>
+  <div class="row">
+    <div class="col-sm-3 add-on">
+      <input class="form-control" placeholder="Search" ng-model="search" name="srch-term" id="srch-term" type="text">
+      </input>
+    </div>
+
+    <div class="col-sm-3">
+      <select class="pkmn-dropdown form-control" ng-model="sortBy">
+        <option value>Sort by...</option>
+        <option value="ename">Name</option>
+        <option value="id">ID</option>
+        <option value="type">Type</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <select class="pkmn-dropdown form-control" ng-model="order" ng-change="toggleReverse();">
+        <option value>Order by...</option>
+        <option value="0">Ascending</option>
+        <option value="1">Descending</option>
+      </select>
+    </div>
+  </div>
+  <div class="pkmn-wrapper container">
+    <div class="row-fluid">
+      <div class="col-md-4 pkmn-div" ng-repeat="pokemon in pokedex.pokemons | filter:search | orderBy: sortBy: reverse">
+        <div ng-click="expandDetails(pokemon);">
+          <img class="pkmn-img" src="../images/thm/{{pokemon.id}}{{pokemon.ename}}.png" />
+          <p class="pkmn-id">{{pokemon.id}}</p>
+          <p class="pkmn-name">{{pokemon.ename}}</p>
+
+          <div class="details-div" ng-show="pokemon.showDetails"> <!-- details -->
+            <img class="pkmn-sprite" src="../images/spr/{{pokemon.id}}MS.png" />
+            <span ng-repeat="type in pokemon.type">{{type}}{{$last ? '' : ', '}}</span><br />
+            <p>Attack: {{pokemon.base.Attack}}</p>
+            <p>Defense: {{pokemon.base.Defense}}</p>
+            <p>HP: {{pokemon.base.HP}}</p>
+            <p>Sp.Atk: {{pokemon.base["Sp.Atk"]}}</p>
+            <p>Sp.Def: {{pokemon.base["Sp.Def"]}}</p>
+            <p>Speed: {{pokemon.base.Speed}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+  <!-- needed libraries and data files -->
+  <script type="text/javascript" src="../js/angular.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="../js/mainController.js"></script>
+  <script type="text/javascript" src="../data/pokedex.js"></script>
+  <script type="text/javascript" src="../data/skills.js"></script>
+  <script type="text/javascript" src="../data/types.js"></script>
+</html>
