@@ -1,0 +1,45 @@
+.pkmn-img {
+  width: 30%;
+}
+
+.pkmn-div {
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.pkmn-wrapper {
+  margin-top: 100px;
+  text-align:center;
+  overflow: auto;
+  height:auto;
+}
+
+.pkmn-header {
+  position: fixed;
+  z-index:1000;
+  background-color:white;
+}
+
+.header {
+  height:10%;
+}
+
+.add-on {
+
+}
+
+.pokeball-icon {
+  width:50%;
+}
+
+.details-div {
+}
+
+.page-header{
+    margin-top: 30px;
+}
+
+.pkmn-row {
+  min-height: 220px;
+}
